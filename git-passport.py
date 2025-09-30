@@ -34,6 +34,7 @@ if __name__ == "__main__":
     if config["enable_hook"]:
         local_email = git.config_get(config, "local", "email")
         local_name = git.config_get(config, "local", "name")
+        local_signingkey = git.config_get(config, "local", "signingkey")
         local_url = git.config_get(config, "local", "url")
 
         if args.select:
@@ -51,12 +52,13 @@ if __name__ == "__main__":
                 local_email,
                 local_name,
                 local_url,
-                style="compact"
+                signingkey=local_signingkey,
+                style="compact",
             )
             sys.exit(0)
 
         if args.passports:
-            dialog.print_choice(config["git_passports"])
+            dialog.print_choices(config["git_passports"])
             exit(0)
 
         if local_email and local_name:
@@ -64,7 +66,8 @@ if __name__ == "__main__":
                 config,
                 local_email,
                 local_name,
-                local_url
+                local_url,
+                signingkey=local_signingkey,
             )
             sys.exit(0)
 
@@ -77,6 +80,9 @@ if __name__ == "__main__":
         if selected_id is not None:
             git.config_set(config, candidates[selected_id]["email"], "email")
             git.config_set(config, candidates[selected_id]["name"], "name")
+            signingkey = candidates[selected_id].get("signingkey")
+            if signingkey:
+                git.config_set(config, signingkey, "signingkey")
             sys.exit(0)
     else:
         print("git-passport is currently disabled.")

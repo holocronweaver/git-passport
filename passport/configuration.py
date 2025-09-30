@@ -42,6 +42,7 @@ def preset(filename):
     preset["passport 1"]["email"] = "email_1@example.com"
     preset["passport 1"]["name"] = "name_1"
     preset["passport 1"]["service"] = "gitlab.com"
+    preset["passport 1"]["signingkey"] = "EOU3TH434TH34599"
 
     try:
         msg = """
@@ -87,7 +88,8 @@ def validate_scheme(filename):
         "enable_hook",
         "name",
         "service",
-        "sleep_duration"
+        "signingkey",
+        "sleep_duration",
     ])
 
     # Create sets containing non-whitelisted section and option names

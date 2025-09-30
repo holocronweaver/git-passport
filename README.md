@@ -75,6 +75,7 @@ service = github.com
 email = email_1@example.com
 name = name_1
 service = gitlab.com
+signingkey = EOU3TH434TH34599
 ```
 
 Adjust the existing sections and add as many passports as you like by following

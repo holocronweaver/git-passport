@@ -13,7 +13,7 @@ from . import (
 
 
 # .............................................................. Case functions
-def active_identity(config, email, name, url, style=None):
+def active_identity(config, email, name, url, signingkey=None, style=None):
     """ Prints an existing ID of a local gitconfig.
 
         Args:
@@ -33,16 +33,13 @@ def active_identity(config, email, name, url, style=None):
         url = "Not set"
 
     if email and name:
-        msg = """
+        msg = f"""
             ~Active Passport:
-                . User:   {}
-                . E-Mail: {}
-                . Remote: {}
-        """.format(
-            name,
-            email,
-            url
-        )
+                . User:   {name}
+                . E-Mail: {email}
+                . Signing Key: {signingkey or 'none'}
+                . Remote: {url}
+        """
 
         print(util.dedented(msg, strip))
     else:
@@ -70,8 +67,8 @@ def url_exists(config, url):
     """
     # A generator to filter matching sections by options:
     # Let's see if user defined IDs match remote.origin.url
-    def gen_candidates(ids, url):
-        for key, value in ids.items():
+    def gen_candidates(passports, url):
+        for key, value in passports.items():
             service = value.get("service")
             if not service:
                 continue
@@ -99,7 +96,7 @@ def url_exists(config, url):
         print(util.dedented(msg, "lstrip"))
         configuration.add_global_id(config, candidates)
 
-    dialog.print_choice(candidates)
+    dialog.print_choices(candidates)
     return candidates
 
 
@@ -119,6 +116,6 @@ def no_url_exists(config):
 
     print(msg)
     configuration.add_global_id(config, candidates)
-    dialog.print_choice(candidates)
+    dialog.print_choices(candidates)
 
     return candidates
