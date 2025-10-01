@@ -25,25 +25,25 @@ if __name__ == "__main__":
         not configuration.preset(config_file) or
         not configuration.validate_scheme(config_file) or
         not configuration.validate_values(config_file) or
-        not git.infected()
+        not git.is_infected()
     ):
         sys.exit(1)
     else:
         config = configuration.release(config_file)
 
     if config["enable_hook"]:
-        local_email = git.config_get(config, "local", "email")
-        local_name = git.config_get(config, "local", "name")
-        local_signingkey = git.config_get(config, "local", "signingkey")
-        local_url = git.config_get(config, "local", "url")
+        local_email = git.get_config("local", "email")
+        local_name = git.get_config("local", "name")
+        local_signingkey = git.get_config("local", "signingkey")
+        local_url = git.get_config("local", "url")
 
         if args.select:
             local_name = None
             local_email = None
-            git.config_remove(verbose=False)
+            git.remove_config(verbose=False)
 
         if args.delete:
-            git.config_remove()
+            git.remove_config()
             sys.exit(0)
 
         if args.active:
@@ -78,11 +78,11 @@ if __name__ == "__main__":
 
         selected_id = dialog.get_input(candidates.keys())
         if selected_id is not None:
-            git.config_set(config, candidates[selected_id]["email"], "email")
-            git.config_set(config, candidates[selected_id]["name"], "name")
+            git.set_config(candidates[selected_id]["email"], "email")
+            git.set_config(candidates[selected_id]["name"], "name")
             signingkey = candidates[selected_id].get("signingkey")
             if signingkey:
-                git.config_set(config, signingkey, "signingkey")
+                git.set_config(signingkey, "signingkey")
             sys.exit(0)
     else:
         print("git-passport is currently disabled.")

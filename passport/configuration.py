@@ -242,8 +242,8 @@ def add_global_id(config, target):
             True (bool): If a global Git ID could be found
             False (bool): If a global Git ID could not be found
     """
-    global_email = git.config_get(config, "global", "email")
-    global_name = git.config_get(config, "global", "name")
+    global_email = git.get_config("global", "email")
+    global_name = git.get_config("global", "name")
     local_passports = config["git_passports"]
 
     if global_email and global_name:
