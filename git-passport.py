@@ -40,6 +40,8 @@ if __name__ == "__main__":
         if args.select:
             local_name = None
             local_email = None
+            local_signingkey = None
+            local_url = 'select-from-all-passports'
             git.remove_config(verbose=False)
 
         if args.delete:
