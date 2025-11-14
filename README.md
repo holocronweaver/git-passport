@@ -67,11 +67,13 @@ enable_hook = True
 sleep_duration = 0.5
 
 [passport 0]
+label = professional
 email = email_0@example.com
 name = name_0
 service = github.com
 
 [passport 1]
+label = personal accounts
 email = email_1@example.com
 name = name_1
 service = gitlab.com,bitbucket.org

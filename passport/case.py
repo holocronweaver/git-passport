@@ -11,9 +11,13 @@ from . import (
     util
 )
 
+INDENT = ' ' * 4
 
 # .............................................................. Case functions
-def active_identity(config, email, name, url, signingkey=None, style=None):
+def active_identity(
+        config, email, name, url,
+        label=None, signingkey=None
+):
     """ Prints an existing ID of a local gitconfig.
 
         Args:
@@ -27,21 +31,27 @@ def active_identity(config, email, name, url, signingkey=None, style=None):
             False (bool): If an active passport could not be found
     """
     duration = config["sleep_duration"]
-    strip = "strip" if style == "compact" else "lstrip"
 
     if not url:
         url = "Not set"
 
     if email and name:
-        msg = f"""
-            ~Active Passport:
-                . User:   {name}
-                . E-Mail: {email}
-                . Signing Key: {signingkey or 'none'}
-                . Remote: {url}
-        """
+        lines = [
+            "~Active Passport:",
+        ]
 
-        print(util.dedented(msg, strip))
+        if label:
+            lines.append(f"{INDENT}. Label:  {label}")
+        lines.extend([
+            f"{INDENT}. User:   {name}",
+            f"{INDENT}. E-Mail: {email}",
+            f"{INDENT}. Signing Key: {signingkey or 'none'}",
+            f"{INDENT}. Remote: {url}",
+        ])
+
+        msg = '\n'.join(lines) + '\n'
+
+        print(msg)
     else:
         msg = "No passport set."
 

@@ -46,9 +46,16 @@ def print_choices(choices):
         id_type = "Global" if choice.get("flag") == "global" else "Passport"
         lines = [
             f"~:{id_type} ID: {choice_key}",
+        ]
+
+        label = choice.get("label")
+        if label:
+            lines.append(f"{INDENT}. Label:  {label}")
+
+        lines.extend([
             f"{INDENT}. User:   {choice['name']}",
             f"{INDENT}. E-Mail: {choice['email']}",
-        ]
+        ])
 
         service = choice.get("service")
         if service:

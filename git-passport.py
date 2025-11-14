@@ -34,12 +34,14 @@ if __name__ == "__main__":
     if config["enable_hook"]:
         local_email = git.get_config("local", "email")
         local_name = git.get_config("local", "name")
+        local_label = git.get_config("local", "label")
         local_signingkey = git.get_config("local", "signingkey")
         local_url = git.get_config("local", "url")
 
         if args.select:
             local_name = None
             local_email = None
+            local_label = None
             local_signingkey = None
             local_url = 'select-from-all-passports'
             git.remove_config(verbose=False)
@@ -54,8 +56,8 @@ if __name__ == "__main__":
                 local_email,
                 local_name,
                 local_url,
+                label=local_label,
                 signingkey=local_signingkey,
-                style="compact",
             )
             sys.exit(0)
 
@@ -69,6 +71,7 @@ if __name__ == "__main__":
                 local_email,
                 local_name,
                 local_url,
+                label=local_label,
                 signingkey=local_signingkey,
             )
             sys.exit(0)

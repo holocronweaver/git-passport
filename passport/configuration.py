@@ -34,11 +34,13 @@ def preset(filename):
     preset["general"]["sleep_duration"] = "0.75"
 
     preset["passport 0"] = {}
+    preset["passport 0"]["label"] = "professional"
     preset["passport 0"]["email"] = "email_0@example.com"
     preset["passport 0"]["name"] = "name_0"
     preset["passport 0"]["service"] = "github.com"
 
     preset["passport 1"] = {}
+    preset["passport 1"]["label"] = "personal accounts"
     preset["passport 1"]["email"] = "email_1@example.com"
     preset["passport 1"]["name"] = "name_1"
     preset["passport 1"]["service"] = "gitlab.com,bitbucket.org"
@@ -86,6 +88,7 @@ def validate_scheme(filename):
     whitelist_options = frozenset([
         "email",
         "enable_hook",
+        "label",
         "name",
         "service",
         "signingkey",
