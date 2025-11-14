@@ -74,7 +74,7 @@ service = github.com
 [passport 1]
 email = email_1@example.com
 name = name_1
-service = gitlab.com
+service = gitlab.com,bitbucket.org
 signingkey = EOU3TH434TH34599
 ```
 

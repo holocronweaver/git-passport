@@ -52,7 +52,7 @@ def print_choices(choices):
 
         service = choice.get("service")
         if service:
-            lines.append(f"{INDENT}. Service: {service}")
+            lines.append(f"{INDENT}. Service: {service.split(',')}")
 
         signingkey = choice.get("signingkey")
         if signingkey:

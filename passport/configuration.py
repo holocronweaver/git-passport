@@ -41,7 +41,7 @@ def preset(filename):
     preset["passport 1"] = {}
     preset["passport 1"]["email"] = "email_1@example.com"
     preset["passport 1"]["name"] = "name_1"
-    preset["passport 1"]["service"] = "gitlab.com"
+    preset["passport 1"]["service"] = "gitlab.com,bitbucket.org"
     preset["passport 1"]["signingkey"] = "EOU3TH434TH34599"
 
     try:

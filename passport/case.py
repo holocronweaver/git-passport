@@ -69,11 +69,12 @@ def url_exists(config, url):
     # Let's see if user defined IDs match remote.origin.url
     def gen_candidates(passports, url):
         for key, value in passports.items():
-            service = value.get("service")
-            if not service:
+            services = value.get("service")
+            if not services:
                 continue
-            if service in url:
-                yield (key, value)
+            for service in services.split(','):
+                if service in url:
+                    yield (key, value)
 
     local_passports = config["git_passports"]
 
