@@ -108,14 +108,16 @@ git passport -h
 You are welcome to report bugs at the [project bugtracker][project-bugtracker]
 at github.com.
 
-[project-bugtracker]: https://github.com/frace/git-passport/issues
+[project-bugtracker]: https://github.com/holocronweaver/git-passport/issues
 
 
 * * *
 ## Credits:
-+ Inspired by [ORR SELLA][credits-1]
-+ Grew at [stackoverflow.com][credits-2]
++ Forked from [frace](credits-0) who made the original package, but has not maintained it for some years.
++ Inspired by [ORR SELLA][credits-1].
++ Grew at [stackoverflow.com][credits-2].
 
+[credits-0]: https://github.com/frace/git-passport
 [credits-1]: https://orrsella.com/2013/08/10/git-using-different-user-emails-for-different-repositories/
 [credits-2]: http://stackoverflow.com/questions/4220416/can-i-specify-multiple-users-for-myself-in-gitconfig/23107012#23107012
 [credits-3]: http://codereview.stackexchange.com/questions/76935/python-based-git-pre-commit-hook-to-manage-multiple-users-git-identities
