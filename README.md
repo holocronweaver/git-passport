@@ -113,7 +113,7 @@ at github.com.
 
 * * *
 ## Credits:
-+ Forked from [frace](credits-0) who made the original package, but has not maintained it for some years.
++ Forked from [frace][credits-0] who made the original package, but has not maintained it for some years.
 + Inspired by [ORR SELLA][credits-1].
 + Grew at [stackoverflow.com][credits-2].
 
